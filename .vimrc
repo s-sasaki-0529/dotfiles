@@ -36,6 +36,11 @@ let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
 " 括弧の自動入力
 NeoBundle 'Townk/vim-autoclose'
 
+" シンタックスチェック
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+
 NeoBundleCheck
 call neobundle#end()
 
