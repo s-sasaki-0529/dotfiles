@@ -43,6 +43,10 @@ NeoBundleCheck
 call neobundle#end()
 
 syntax on " ソースコードハイライトON
+set encoding=utf-8 "文字コード関連"
+set fenc=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 set t_Co=256 " 256色使用
 set number " 行番号を表示
 set tabstop=2 " ２タブ
