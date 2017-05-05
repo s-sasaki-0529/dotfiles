@@ -39,8 +39,15 @@ NeoBundle 'Townk/vim-autoclose'
 " 一括コメントアウト
 NeoBundle 'tpope/vim-commentary'
 
+" HTMLの自動入力
+NeoBundle 'mattn/emmet-vim'
+let g:user_emmet_leader_key='<c-t>'
+
 NeoBundleCheck
 call neobundle#end()
+
+" HTML閉じタグの自動補完
+
 
 syntax on " ソースコードハイライトON
 set encoding=utf-8 "文字コード関連"
