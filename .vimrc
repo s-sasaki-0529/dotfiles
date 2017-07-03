@@ -43,6 +43,9 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-t>'
 
+" マルチカーソル
+NeoBundle 'terryma/vim-multiple-cursors'
+
 NeoBundleCheck
 call neobundle#end()
 
