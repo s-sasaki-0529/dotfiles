@@ -54,6 +54,9 @@ let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '┆'
 command ILT IndentLinesToggle
 
+" Slimのシンタックスハイライト
+NeoBundle 'slim-template/vim-slim'
+
 NeoBundleCheck
 call neobundle#end()
 
