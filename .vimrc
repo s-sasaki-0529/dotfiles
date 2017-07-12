@@ -46,6 +46,11 @@ let g:user_emmet_leader_key='<c-t>'
 " マルチカーソル
 NeoBundle 'terryma/vim-multiple-cursors'
 
+" インデントライン
+NeoBundle 'Yggdroot/indentLine'
+let g:indentLine_faster = 0
+command ILT IndentLinesToggle
+
 NeoBundleCheck
 call neobundle#end()
 
