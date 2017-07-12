@@ -49,6 +49,9 @@ NeoBundle 'terryma/vim-multiple-cursors'
 " インデントライン
 NeoBundle 'Yggdroot/indentLine'
 let g:indentLine_faster = 0
+let g:indentLine_color_term = 15921906
+let g:indentLine_color_gui = '#708090'
+let g:indentLine_char = '┆'
 command ILT IndentLinesToggle
 
 NeoBundleCheck
