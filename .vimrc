@@ -57,6 +57,10 @@ command ILT IndentLinesToggle
 " Slimのシンタックスハイライト
 NeoBundle 'slim-template/vim-slim'
 
+" JSXのシンタックスハイライト
+NeoBundle 'othree/yajs.vim'
+NeoBundle 'maxmellon/vim-jsx-pretty'
+
 NeoBundleCheck
 call neobundle#end()
 
