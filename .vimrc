@@ -55,6 +55,7 @@ set fenc=utf-8
 set fileformats=unix,dos,mac
 set t_Co=256 " 256色使用
 set number " 行番号を表示
+set cursorline " カーソルラインを表示 "
 set tabstop=2 " ２タブ
 set shiftwidth=2 " オートインデント時２タブ
 set softtabstop=2 " 連続した空白に対して２文字ずつカーソル移動
