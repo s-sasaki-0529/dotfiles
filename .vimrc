@@ -43,6 +43,16 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-t>'
 
+" Slimのシンタックスハイライト
+NeoBundle 'slim-template/vim-slim'
+
+" JSXのシンタックスハイライト
+NeoBundle 'othree/yajs.vim'
+NeoBundle 'maxmellon/vim-jsx-pretty'
+
+" Helpの日本語化
+NeoBundle 'vim-jp/vimdoc-ja'
+
 NeoBundleCheck
 call neobundle#end()
 
