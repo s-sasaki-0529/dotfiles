@@ -56,6 +56,12 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleCheck
 call neobundle#end()
 
+" コード補完の自動化
+set completeopt=menuone
+for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
+  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
+endfor
+
 syntax on " ソースコードハイライトON
 set encoding=utf-8 "文字コード関連"
 set fenc=utf-8
