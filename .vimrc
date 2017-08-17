@@ -57,10 +57,11 @@ NeoBundleCheck
 call neobundle#end()
 
 " コード補完の自動化
-set completeopt=menuone
+set completeopt=menuone,preview
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
   exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
 endfor
+set dictionary=~/dicts/ruby.dict
 
 syntax on " ソースコードハイライトON
 set encoding=utf-8 "文字コード関連"
