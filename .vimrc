@@ -1,4 +1,4 @@
-" neobundle settings {{{
+" NeoBundle初期設定
 if has('vim_starting')
   set nocompatible
   if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
@@ -15,23 +15,26 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
 
-" 自動補完 {{{
-if has('lua')
-  NeoBundleLazy 'Shougo/neocomplete.vim', {
-    \ 'depends' : 'Shougo/vimproc',
-    \ 'autoload' : { 'insert' : 1,}
-    \ }
+" 自動補完
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/neocomplcache-rsense.vim'
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplete#enable_at_startup               = 1
-let g:neocomplete#auto_completion_start_length    = 3
-let g:neocomplete#enable_ignore_case              = 1
-let g:neocomplete#enable_smart_case               = 1
-let g:neocomplete#enable_camel_case               = 1
-let g:neocomplete#use_vimproc                     = 1
-let g:neocomplete#sources#buffer#cache_limit_size = 1000000
-let g:neocomplete#sources#tags#cache_limit_size   = 30000000
-let g:neocomplete#enable_fuzzy_completion         = 1
-let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:rsenseHome = expand("~/.vim/bundle/rsense")
+let g:rsenseUseOmniFunc = 1
+highlight Pmenu     ctermbg=4
+highlight PmenuSel  ctermbg=1
+highlight PmenuSbar ctermbg=4
 
 " 括弧の自動入力
 NeoBundle 'Townk/vim-autoclose'
@@ -56,12 +59,6 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleCheck
 call neobundle#end()
 
-" コード補完の自動化
-set completeopt=menuone,preview
-for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
-endfor
-set dictionary=~/dicts/ruby.dict
 
 syntax on " ソースコードハイライトON
 set encoding=utf-8 "文字コード関連"
