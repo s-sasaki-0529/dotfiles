@@ -97,8 +97,8 @@ set number
 set cursorline
 set laststatus=2
 set list
-set showmatch " 閉じ括弧入力時に対応する開き括弧を一瞬表示
-set display=lastline " 末尾の行が収まらない場合もできるだけ表示
+set showmatch
+set display=lastline
 
 "---------------------------------------------------------
 " インデント関係
@@ -115,11 +115,11 @@ set backspace=indent,eol,start
 "---------------------------------------------------------
 " 検索関係
 "---------------------------------------------------------
-set incsearch  " 検索時に１文字入力ごとに検索を実行する
-set hlsearch   " 検索結果をハイライトする
+set incsearch
+set hlsearch
 
 "---------------------------------------------------------
 " その他
 "---------------------------------------------------------
-set whichwrap=b,s,h,l,<,>,[,] " 行を跨いだ左右カーソル移動
-set filetype=html " ファイルの種類を特定できない場合HTML扱い
+set whichwrap=b,s,h,l,<,>,[,]
+set filetype=html
