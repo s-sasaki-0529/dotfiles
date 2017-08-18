@@ -1,4 +1,6 @@
-" NeoBundle初期設定
+"---------------------------------------------------------
+" NeoBundle ここから
+"---------------------------------------------------------
 if has('vim_starting')
   set nocompatible
   if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
@@ -15,7 +17,9 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
 
+"---------------------------------------------------------
 " 自動補完
+"---------------------------------------------------------
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neocomplcache-rsense.vim'
 let g:acp_enableAtStartup = 0
@@ -32,54 +36,90 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:rsenseHome = expand("~/.vim/bundle/rsense")
 let g:rsenseUseOmniFunc = 1
-highlight Pmenu     ctermbg=4
-highlight PmenuSel  ctermbg=1
-highlight PmenuSbar ctermbg=4
 
+"---------------------------------------------------------
 " 括弧の自動入力
+"---------------------------------------------------------
 NeoBundle 'Townk/vim-autoclose'
 
+"---------------------------------------------------------
 " 一括コメントアウト
+"---------------------------------------------------------
 NeoBundle 'tpope/vim-commentary'
 
+"---------------------------------------------------------
 " HTMLの自動入力
+"---------------------------------------------------------
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-t>'
 
-" Slimのシンタックスハイライト
+"---------------------------------------------------------
+" シンタックスハイライト
+"---------------------------------------------------------
 NeoBundle 'slim-template/vim-slim'
-
-" JSXのシンタックスハイライト
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'maxmellon/vim-jsx-pretty'
 
+"---------------------------------------------------------
 " Helpの日本語化
+"---------------------------------------------------------
 NeoBundle 'vim-jp/vimdoc-ja'
 
+"---------------------------------------------------------
+" NeoBundle ここまで
+"---------------------------------------------------------
 NeoBundleCheck
 call neobundle#end()
 
+"----------------------------------------------------------
+" 配色設定
+"----------------------------------------------------------
+set t_Co=256
+highlight StatusLine   cterm=NONE ctermfg=white ctermbg=233
+highlight StatusLineNC cterm=NONE ctermfg=white ctermbg=233
+highlight VertSplit    cterm=NONE ctermfg=233   ctermbg=233
+highlight Pmenu     ctermbg=4
+highlight PmenuSel  ctermbg=1
+highlight PmenuSbar ctermbg=4
+syntax on
 
-syntax on " ソースコードハイライトON
-set encoding=utf-8 "文字コード関連"
+"---------------------------------------------------------
+" 文字コード関係
+"---------------------------------------------------------
+set encoding=utf-8
 set fenc=utf-8
 set fileformats=unix,dos,mac
-set t_Co=256 " 256色使用
-set number " 行番号を表示
-set cursorline " カーソルラインを表示 "
-set tabstop=2 " ２タブ
-set shiftwidth=2 " オートインデント時２タブ
-set softtabstop=2 " 連続した空白に対して２文字ずつカーソル移動
-set autoindent " インデントの自動挿入
-set smartindent " インデントの自動挿入
-set expandtab " タブをスペース扱い
-set whichwrap=b,s,h,l,<,>,[,] " 行を跨いだ左右カーソル移動
+
+"---------------------------------------------------------
+" エディタの見た目関係
+"---------------------------------------------------------
+set number
+set cursorline
+set laststatus=2
+set list
 set showmatch " 閉じ括弧入力時に対応する開き括弧を一瞬表示
 set display=lastline " 末尾の行が収まらない場合もできるだけ表示
-set laststatus=2 " 画面下にステータスバーを表示
+
+"---------------------------------------------------------
+" インデント関係
+"---------------------------------------------------------
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set expandtab
+set listchars=tab:>-,trail:.
+set softtabstop=2
+set backspace=indent,eol,start
+
+"---------------------------------------------------------
+" 検索関係
+"---------------------------------------------------------
 set incsearch  " 検索時に１文字入力ごとに検索を実行する
 set hlsearch   " 検索結果をハイライトする
+
+"---------------------------------------------------------
+" その他
+"---------------------------------------------------------
+set whichwrap=b,s,h,l,<,>,[,] " 行を跨いだ左右カーソル移動
 set filetype=html " ファイルの種類を特定できない場合HTML扱い
-set backspace=indent,eol,start " バックスペースがきかなくなる対策
-set list  " 不可視文字を表示する
-set listchars=tab:>-,trail:.  " タブを >--- 半スペを . で表示する
