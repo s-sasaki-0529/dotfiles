@@ -106,6 +106,7 @@ set laststatus=2
 set list
 set showmatch
 set display=lastline
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P]']'}
 
 "---------------------------------------------------------
 " インデント関係
