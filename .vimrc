@@ -41,6 +41,7 @@ let g:rsenseUseOmniFunc = 1
 " 括弧の自動入力
 "---------------------------------------------------------
 NeoBundle 'Townk/vim-autoclose'
+autocmd FileType ruby setlocal commentstring=#\ %s
 
 "---------------------------------------------------------
 " 一括コメントアウト
