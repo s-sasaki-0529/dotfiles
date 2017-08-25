@@ -143,3 +143,4 @@ set hlsearch
 "---------------------------------------------------------
 set whichwrap=b,s,h,l,<,>,[,]
 set filetype=html
+inoremap <silent> jj <ESC>
