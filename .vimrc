@@ -147,5 +147,5 @@ set filetype=html
 "---------------------------------------------------------
 " その他 キーバインド
 "---------------------------------------------------------
-inoremap <silent> jj <ESC>
-nnoremap <Esc><Esc> :noh<CR>
+inoremap <silent> <C-j><C-j> <ESC>
+inoremap <silent> jj <ESC>:w<CR>
