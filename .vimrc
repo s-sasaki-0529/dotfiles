@@ -149,3 +149,7 @@ set filetype=html
 "---------------------------------------------------------
 inoremap <silent> <C-j> <ESC>
 inoremap <silent> jj <ESC>:w<CR>
+nnoremap <Up>    :w!<CR>
+nnoremap <Down>  :w!<CR>
+nnoremap <Left>  :w!<CR>
+nnoremap <Right> :w!<CR>
