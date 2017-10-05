@@ -143,7 +143,9 @@ set hlsearch
 "---------------------------------------------------------
 set whichwrap=b,s,h,l,<,>,[,]
 set filetype=html
-autocmd BufWritePre * :%s/\s\+$//ge
+autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
+autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
+autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
 
 "---------------------------------------------------------
 " その他 キーバインド
