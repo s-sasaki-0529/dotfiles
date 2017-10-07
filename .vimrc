@@ -156,7 +156,3 @@ nnoremap <Up>    :w!<CR>
 nnoremap <Down>  :w!<CR>
 nnoremap <Left>  :w!<CR>
 nnoremap <Right> :w!<CR>
-inoremap <silent> <C-h> <Left>
-inoremap <silent> <C-j> <DOWN>
-inoremap <silent> <C-k> <UP>
-inoremap <silent> <C-l> <RIGHT>
