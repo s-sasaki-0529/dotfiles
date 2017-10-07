@@ -150,10 +150,13 @@ autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライト�
 "---------------------------------------------------------
 " その他 キーバインド
 "---------------------------------------------------------
-inoremap <silent> <C-j> <ESC>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Up>    :w!<CR>
 nnoremap <Down>  :w!<CR>
 nnoremap <Left>  :w!<CR>
 nnoremap <Right> :w!<CR>
+inoremap <silent> <C-h> <Left>
+inoremap <silent> <C-j> <DOWN>
+inoremap <silent> <C-k> <UP>
+inoremap <silent> <C-l> <RIGHT>
