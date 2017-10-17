@@ -78,6 +78,7 @@ nmap <silent><C-n> :NERDTreeToggle<CR>
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'maxmellon/vim-jsx-pretty'
+NeoBundle 'posva/vim-vue'
 
 "---------------------------------------------------------
 " Helpの日本語化
