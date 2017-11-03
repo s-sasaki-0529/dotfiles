@@ -79,6 +79,7 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'maxmellon/vim-jsx-pretty'
 NeoBundle 'posva/vim-vue'
+highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
 
 "---------------------------------------------------------
 " Helpの日本語化
