@@ -115,7 +115,6 @@ set fileformats=unix,dos,mac
 " エディタの見た目関係
 "---------------------------------------------------------
 set number
-set cursorline
 set laststatus=2
 set list
 set showmatch
