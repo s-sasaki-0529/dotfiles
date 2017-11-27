@@ -156,7 +156,5 @@ inoremap <silent> <C-j> <ESC><ESC>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
-nnoremap <Up>    :w!<CR>
-nnoremap <Down>  :w!<CR>
-nnoremap <Left>  :w!<CR>
-nnoremap <Right> :w!<CR>
+nnoremap <Down> gj
+nnoremap <Up>   gk
