@@ -87,6 +87,12 @@ highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
 NeoBundle 'itchyny/lightline.vim'
 
 "---------------------------------------------------------
+" 括弧の差し替え、追加、削除
+" cs"' / ys[text object]"
+"---------------------------------------------------------
+NeoBundle 'tpope/vim-surround'
+
+"---------------------------------------------------------
 " Helpの日本語化
 "---------------------------------------------------------
 NeoBundle 'vim-jp/vimdoc-ja'
