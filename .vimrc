@@ -82,6 +82,11 @@ NeoBundle 'posva/vim-vue'
 highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
 
 "---------------------------------------------------------
+" ステータスラインの装飾
+"---------------------------------------------------------
+NeoBundle 'itchyny/lightline.vim'
+
+"---------------------------------------------------------
 " Helpの日本語化
 "---------------------------------------------------------
 NeoBundle 'vim-jp/vimdoc-ja'
