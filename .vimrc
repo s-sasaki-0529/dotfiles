@@ -55,7 +55,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "---------------------------------------------------------
-" ソースコードの実行
+" ソースコードの実行 \r
 "---------------------------------------------------------
 NeoBundle 'thinca/vim-quickrun'
 
