@@ -177,6 +177,8 @@ inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-j> <ESC><ESC>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
+nnoremap ; :
+nnoremap ' :
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
 nnoremap <Up>   gk
