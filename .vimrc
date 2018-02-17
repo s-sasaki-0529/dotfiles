@@ -53,7 +53,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers=['rubocop', 'mri']
 
 "---------------------------------------------------------
 " ソースコードの実行 \r
@@ -174,7 +173,7 @@ autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライト�
 "---------------------------------------------------------
 " その他 キーバインド
 "---------------------------------------------------------
-inoremap <silent> jj <ESC>:noh<CR>
+inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-j> <ESC><ESC>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
