@@ -93,6 +93,7 @@ NeoBundle 'maxmellon/vim-jsx-pretty'
 NeoBundle 'posva/vim-vue'
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
+hi! link rubyTodo Comment
 
 "---------------------------------------------------------
 " ステータスラインの装飾
