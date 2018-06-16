@@ -182,6 +182,7 @@ inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-j> <ESC><ESC>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
+vnoremap ; :
 nnoremap ; :
 nnoremap ' :
 nnoremap <silent> <C-j> :bprev<CR>
@@ -191,3 +192,5 @@ nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
 nnoremap <Up>   gk
 inoremap <silent> {<CR> {<CR>}<ESC><S-o>
+inoremap <silent> [<CR> [<CR>]<ESC><S-o><TAB>
+inoremap <silent> (<CR> (<CR>)<ESC><S-o><TAB>
