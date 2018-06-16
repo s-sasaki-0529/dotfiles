@@ -55,6 +55,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_javascript_checkers = ['eslint']
 
 "---------------------------------------------------------
 " ソースコードの実行 \r
@@ -183,6 +184,8 @@ inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
 nnoremap ; :
 nnoremap ' :
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> Z :w<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
