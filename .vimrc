@@ -190,3 +190,4 @@ nnoremap <silent> Z :w<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
 nnoremap <Up>   gk
+inoremap <silent> {<CR> {<CR>}<ESC><S-o>
