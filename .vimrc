@@ -74,6 +74,11 @@ autocmd FileType ruby setlocal commentstring=#\ %s
 NeoBundle 'tpope/vim-commentary'
 
 "---------------------------------------------------------
+" リテラルトグル
+"---------------------------------------------------------
+NeoBundle 'AndrewRadev/switch.vim'
+
+"---------------------------------------------------------
 " HTMLの自動入力 <C-t>,
 "---------------------------------------------------------
 NeoBundle 'mattn/emmet-vim'
@@ -192,5 +197,6 @@ nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
 nnoremap <Up>   gk
 inoremap <silent> {<CR> {<CR>}<ESC><S-o>
+inoremap <silent> {<CR><CR> {<CR>},<ESC><S-o>
 inoremap <silent> [<CR> [<CR>]<ESC><S-o><TAB>
 inoremap <silent> (<CR> (<CR>)<ESC><S-o><TAB>
