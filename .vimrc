@@ -158,10 +158,9 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set tabstop=2
 set shiftwidth=2
 set autoindent
-set smartindent
 set expandtab
 set listchars=tab:>-,trail:.
-set softtabstop=2
+" set softtabstop=2 悪さするほうが多い?
 set backspace=indent,eol,start
 
 "---------------------------------------------------------
@@ -192,11 +191,11 @@ nnoremap ; :
 nnoremap ' :
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
-nnoremap <silent> Z :w<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
 nnoremap <Up>   gk
 inoremap <silent> {<CR> {<CR>}<ESC><S-o>
-inoremap <silent> {<CR><CR> {<CR>},<ESC><S-o>
 inoremap <silent> [<CR> [<CR>]<ESC><S-o><TAB>
 inoremap <silent> (<CR> (<CR>)<ESC><S-o><TAB>
+" ドキュメントコメント入れる。ひどいゴリ押し
+inoremap <silent> ###<CR> ###<Left><Left><CR><Right><CR><Right><Up><Space>
