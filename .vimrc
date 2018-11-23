@@ -1,27 +1,49 @@
-"---------------------------------------------------------
-" NeoBundle ここから
-"---------------------------------------------------------
-if has('vim_starting')
-  set nocompatible
-  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-    echo "install neobundle..."
-    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+" Dein ここから
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
   endif
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-call neobundle#begin(expand('~/.vim/bundle'))
-let g:neobundle_default_git_protocol='https'
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundleLazy 'tpope/vim-endwise', {
-  \ 'autoload' : { 'insert' : 1,}}
+  let g:rc_dir    = expand('~/.vim/rc')
+  call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
-"---------------------------------------------------------
-" 自動補完
-"---------------------------------------------------------
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/neocomplcache-rsense.vim'
+  " プラグインのインストール
+  call dein#add('Shougo/neocomplcache.vim')
+  call dein#add('Shougo/neocomplcache-rsense.vim')
+  call dein#add('Shougo/neosnippet')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('scrooloose/syntastic.git')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('Townk/vim-autoclose')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('AndrewRadev/switch.vim')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('slim-template/vim-slim')
+  call dein#add('othree/yajs.vim')
+  call dein#add('maxmellon/vim-jsx-pretty')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('tpope/vim-surround')
+  call dein#add('posva/vim-vue')
+  call dein#add('tpope/vim-endwise')
+  call dein#add('vim-jp/vimdoc-ja')
+
+  call dein#end()
+  call dein#save_state()
+endif
+if dein#check_install()
+  call dein#install()
+endif
+" Dein ここまで
+
+" neocomplcache コード補完の設定
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -36,16 +58,11 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:rsenseHome = expand("~/.vim/bundle/rsense")
 let g:rsenseUseOmniFunc = 1
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-"---------------------------------------------------------
-" シンタックスチェック
-"---------------------------------------------------------
-NeoBundle 'scrooloose/syntastic.git'
+" syntastic シンタックスチェック
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -57,75 +74,30 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_javascript_checkers = ['eslint']
 
-"---------------------------------------------------------
-" ソースコードの実行 \r
-"---------------------------------------------------------
-NeoBundle 'thinca/vim-quickrun'
 
-"---------------------------------------------------------
+" Unite 汎用インタフェース
+" TODO: Deniteに乗り換え
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+nnoremap <silent> ,file :Unite file_rec/git<CR>
+nnoremap <silent> ,grep :Unite grep/git<CR>
+
 " 括弧の自動入力
-"---------------------------------------------------------
-NeoBundle 'Townk/vim-autoclose'
 autocmd FileType ruby setlocal commentstring=#\ %s
 
-"---------------------------------------------------------
-" 一括コメントアウト gc
-"---------------------------------------------------------
-NeoBundle 'tpope/vim-commentary'
-
-"---------------------------------------------------------
-" リテラルトグル
-"---------------------------------------------------------
-NeoBundle 'AndrewRadev/switch.vim'
-
-"---------------------------------------------------------
-" HTMLの自動入力 <C-t>,
-"---------------------------------------------------------
-NeoBundle 'mattn/emmet-vim'
+" emmet HTMLの自動入力 <C-t>,
 let g:user_emmet_leader_key='<c-t>'
 
-"---------------------------------------------------------
-" ディレクトリツリー <C-n>
-"---------------------------------------------------------
-NeoBundle 'scrooloose/nerdtree'
+" nerdtree ディレクトリツリー <C-n>
 nmap <silent><C-n> :NERDTreeToggle<CR>
 
-"---------------------------------------------------------
 " シンタックスハイライト
-"---------------------------------------------------------
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'othree/yajs.vim'
-NeoBundle 'maxmellon/vim-jsx-pretty'
-NeoBundle 'posva/vim-vue'
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
 hi! link rubyTodo Comment
 
-"---------------------------------------------------------
-" ステータスラインの装飾
-"---------------------------------------------------------
-NeoBundle 'itchyny/lightline.vim'
-
-"---------------------------------------------------------
-" 括弧の差し替え、追加、削除
-" cs"' / ys[text object]"
-"---------------------------------------------------------
-NeoBundle 'tpope/vim-surround'
-
-"---------------------------------------------------------
-" Helpの日本語化
-"---------------------------------------------------------
-NeoBundle 'vim-jp/vimdoc-ja'
-
-"---------------------------------------------------------
-" NeoBundle ここまで
-"---------------------------------------------------------
-NeoBundleCheck
-call neobundle#end()
-
-"----------------------------------------------------------
 " 配色設定
-"----------------------------------------------------------
 set t_Co=256
 highlight StatusLine   cterm=NONE ctermfg=white ctermbg=233
 highlight StatusLineNC cterm=NONE ctermfg=white ctermbg=233
@@ -135,16 +107,12 @@ highlight PmenuSel  ctermbg=1
 highlight PmenuSbar ctermbg=4
 syntax on
 
-"---------------------------------------------------------
 " 文字コード関係
-"---------------------------------------------------------
 set encoding=utf-8
 set fenc=utf-8
 set fileformats=unix,dos,mac
 
-"---------------------------------------------------------
 " エディタの見た目関係
-"---------------------------------------------------------
 set number
 set laststatus=2
 set list
@@ -152,9 +120,7 @@ set showmatch
 set display=lastline
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P]']'}
 
-"---------------------------------------------------------
 " インデント関係
-"---------------------------------------------------------
 set tabstop=2
 set shiftwidth=2
 set autoindent
@@ -163,24 +129,18 @@ set listchars=tab:>-,trail:.
 " set softtabstop=2 悪さするほうが多い?
 set backspace=indent,eol,start
 
-"---------------------------------------------------------
 " 検索関係
-"---------------------------------------------------------
 set incsearch
 set hlsearch
 
-"---------------------------------------------------------
 " その他
-"---------------------------------------------------------
 set whichwrap=b,s,h,l,<,>,[,]
 set filetype=html
 autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
 autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
 
-"---------------------------------------------------------
 " その他 キーバインド
-"---------------------------------------------------------
 nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-j> <ESC><ESC>
