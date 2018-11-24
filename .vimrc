@@ -14,10 +14,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
   " プラグインのインストール
-  call dein#add('Shougo/neocomplcache.vim')
-  call dein#add('Shougo/neocomplcache-rsense.vim')
-  call dein#add('Shougo/neosnippet')
-  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neocomplcache.vim')         " コード補完
+  call dein#add('Shougo/neocomplcache-rsense.vim')  " コード補完
   call dein#add('scrooloose/syntastic.git')
   call dein#add('Shougo/unite.vim')
   call dein#add('thinca/vim-quickrun')
@@ -58,9 +56,6 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:rsenseHome = expand("~/.vim/bundle/rsense")
 let g:rsenseUseOmniFunc = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " syntastic シンタックスチェック
 set statusline+=%#warningmsg#
