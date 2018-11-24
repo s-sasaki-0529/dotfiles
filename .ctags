@@ -1,0 +1,8 @@
+--append=yes
+--recurse=yes
+--langmap=Ruby:+.rake
+--langmap=Javascript:+.vue
+--exclude=.git
+--exclude=log
+--exclude=node_modules
+--exclude=vendor
