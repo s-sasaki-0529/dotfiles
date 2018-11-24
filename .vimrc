@@ -92,6 +92,9 @@ autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
 hi! link rubyTodo Comment
 
+" ctag
+set tags=${APP}/tags " プロジェクトルートに設定
+
 " 配色設定
 set t_Co=256
 highlight StatusLine   cterm=NONE ctermfg=white ctermbg=233
@@ -138,13 +141,12 @@ autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライト�
 " その他 キーバインド
 nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
-inoremap <silent> <C-j> <ESC><ESC>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
 vnoremap ; :
 nnoremap ; :
 nnoremap ' :
-nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-d> :bd<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
