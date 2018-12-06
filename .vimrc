@@ -143,7 +143,7 @@ nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
-nnoremap <silent> <C-d> :bd<CR>
+nnoremap <silent> <C-x> :bd<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
