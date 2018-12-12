@@ -74,7 +74,6 @@ let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '=='
 let g:ale_open_list = 0
 let g:ale_fix_on_save = 1
-let b:ale_linter_aliases = ['javascript', 'vue']
 
 " 括弧の自動入力
 autocmd FileType ruby setlocal commentstring=#\ %s
@@ -135,6 +134,9 @@ set filetype=html
 autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
 autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
+
+" その他コマンド
+command Fn echo expand("%:p")
 
 " その他 キーバインド
 nnoremap <C-C> :w<CR>
