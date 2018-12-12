@@ -16,12 +16,12 @@ if dein#load_state(s:dein_dir)
   " プラグインのインストール
   call dein#add('Shougo/neocomplcache.vim')         " コード補完
   call dein#add('Shougo/neocomplcache-rsense.vim')  " コード補完
-  call dein#add('scrooloose/syntastic.git')
+  call dein#add('w0rp/ale')
   call dein#add('Shougo/unite.vim')
   call dein#add('thinca/vim-quickrun')
   call dein#add('Townk/vim-autoclose')
   call dein#add('tpope/vim-commentary')
-  call dein#add('AndrewRadev/switch.vim')
+  call dein#add('AndrewRadev/switch.vim') " gs
   call dein#add('mattn/emmet-vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('slim-template/vim-slim')
@@ -57,19 +57,6 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:rsenseHome = expand("~/.vim/bundle/rsense")
 let g:rsenseUseOmniFunc = 1
 
-" syntastic シンタックスチェック
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers=['rubocop']
-let g:syntastic_javascript_checkers = ['eslint']
-
-
 " Unite 汎用インタフェース
 " TODO: Deniteに乗り換え
 let g:unite_enable_start_insert=1
@@ -77,6 +64,17 @@ let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 nnoremap <silent> ,file :Unite file_rec/git<CR>
 nnoremap <silent> ,grep :Unite grep/git<CR>
+
+" ALE
+let g:ale_fixers = {
+\   'ruby': ['rubocop'],
+\   'vue': ['eslint']
+\}
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '=='
+let g:ale_open_list = 0
+let g:ale_fix_on_save = 1
+let b:ale_linter_aliases = ['javascript', 'vue']
 
 " 括弧の自動入力
 autocmd FileType ruby setlocal commentstring=#\ %s
@@ -139,7 +137,7 @@ autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを�
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
 
 " その他 キーバインド
-nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
+nnoremap <C-C> :w<CR>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
