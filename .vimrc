@@ -73,7 +73,8 @@ let g:ale_fixers = {
 let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '=='
 let g:ale_open_list = 0
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
+command Fix ALEFix
 
 " 括弧の自動入力
 autocmd FileType ruby setlocal commentstring=#\ %s
