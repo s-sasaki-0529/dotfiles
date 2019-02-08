@@ -62,8 +62,8 @@ let g:rsenseUseOmniFunc = 1
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,file :Unite file_rec/git<CR>
-nnoremap <silent> ,grep :Unite grep/git<CR>
+nnoremap <silent> ,f :Unite file_rec/git<CR>
+nnoremap <silent> ,g :Unite grep/git<CR>
 
 " ALE
 let g:ale_fixers = {
