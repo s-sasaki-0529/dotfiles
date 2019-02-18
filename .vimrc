@@ -75,6 +75,7 @@ let g:ale_sign_warning = '=='
 let g:ale_open_list = 0
 let g:ale_fix_on_save = 0
 command Fix ALEFix
+command Ale call ale#toggle#Toggle()
 
 " 括弧の自動入力
 autocmd FileType ruby setlocal commentstring=#\ %s
