@@ -17,7 +17,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/neocomplcache.vim')         " コード補完
   call dein#add('Shougo/neocomplcache-rsense.vim')  " コード補完
   call dein#add('w0rp/ale')
-  call dein#add('Shougo/unite.vim')
   call dein#add('thinca/vim-quickrun')
   call dein#add('Townk/vim-autoclose')
   call dein#add('tpope/vim-commentary')
@@ -32,7 +31,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('posva/vim-vue')
   call dein#add('tpope/vim-endwise')
   call dein#add('vim-jp/vimdoc-ja')
-
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#end()
   call dein#save_state()
 endif
@@ -57,13 +57,11 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:rsenseHome = expand("~/.vim/bundle/rsense")
 let g:rsenseUseOmniFunc = 1
 
-" Unite 汎用インタフェース
-" TODO: Deniteに乗り換え
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,f :Unite file_rec/git<CR>
-nnoremap <silent> ,g :Unite grep/git<CR>
+" fzf
+nnoremap <silent> ,f :GFiles<CR>
+nnoremap <silent> ,b :Buffers<CR>
+nnoremap <silent> ,h :History<CR>
+nnoremap <silent> ,m :Mark<CR>
 
 " ALE
 let g:ale_fixers = {
