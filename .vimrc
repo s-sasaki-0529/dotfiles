@@ -130,6 +130,10 @@ set backspace=indent,eol,start
 set incsearch
 set hlsearch
 
+" 前回のビューの状態を再現できるように
+autocmd BufWinLeave *.* silent mkview
+autocmd BufWinEnter *.* silent loadview
+
 " その他
 set whichwrap=b,s,h,l,<,>,[,]
 set filetype=html
