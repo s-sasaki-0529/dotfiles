@@ -33,6 +33,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-jp/vimdoc-ja')
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('thoughtbot/vim-rspec')
   call dein#end()
   call dein#save_state()
 endif
@@ -64,6 +65,10 @@ nnoremap <silent> ,b :Buffers<CR>
 nnoremap <silent> ,l :Lines<CR>
 nnoremap <silent> ,h :History<CR>
 nnoremap <silent> ,m :Mark<CR>
+
+" rspec
+nnoremap <silent> ,r :call RunNearestSpec()<CR>
+let g:rspec_command = "!rspec --format doc {spec}"
 
 " ALE
 let g:ale_fixers = {
@@ -140,6 +145,7 @@ set filetype=html
 autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
 autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
+nnoremap <silent> ,d :bd<CR>
 
 " その他コマンド
 command Fn echo expand("%:p")
@@ -149,7 +155,6 @@ nnoremap <C-C> :w<CR>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
 inoremap <silent> <C-l> <CR>
 inoremap <silent> <C-;> <CR>
-nnoremap <silent> <C-x> :bd<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
