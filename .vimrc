@@ -68,7 +68,8 @@ nnoremap <silent> ,m :Mark<CR>
 
 " rspec
 nnoremap <silent> ,r :call RunNearestSpec()<CR>
-let g:rspec_command = "!rspec --format doc {spec}"
+nnoremap <silent> ,R :call RunCurrentSpecFile()<CR>
+let g:rspec_command = "!bundle exec rspec --format doc {spec}"
 
 " ALE
 let g:ale_fixers = {
@@ -95,9 +96,6 @@ nmap <silent><C-n> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 highlight Search term=bold,reverse ctermfg=15 ctermbg=233 gui=bold,reverse
 hi! link rubyTodo Comment
-
-" ctag
-set tags=${APP}/tags " プロジェクトルートに設定
 
 " 配色設定
 set t_Co=256
