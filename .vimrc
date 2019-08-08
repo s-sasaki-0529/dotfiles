@@ -42,6 +42,10 @@ if dein#check_install()
 endif
 " Dein ここまで
 
+" 前回のビューの状態を再現できるように
+autocmd BufWinLeave *.* silent mkview
+autocmd BufWinEnter *.* silent loadview
+
 " neocomplcache コード補完の設定
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
@@ -124,22 +128,22 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set autoindent
 set listchars=tab:>-,trail:.
 set backspace=indent,eol,start
-autocmd BufRead * call EnableTabIndent()
-autocmd BufRead *.go call EnableSpaceIndent()
+autocmd BufNewFile,BufRead * call EnableSpaceIndent()
+autocmd BufNewFile,BufRead *.go call EnableTabIndent()
 function EnableTabIndent()
   set noexpandtab
+  set tabstop=4
+  set shiftwidth=4
 endfunction
 function EnableSpaceIndent()
   set expandtab
+  set tabstop=2
+  set shiftwidth=2
 endfunction
 
 " 検索関係
 set incsearch
 set hlsearch
-
-" 前回のビューの状態を再現できるように
-autocmd BufWinLeave *.* silent mkview
-autocmd BufWinEnter *.* silent loadview
 
 " その他
 set whichwrap=b,s,h,l,<,>,[,]
