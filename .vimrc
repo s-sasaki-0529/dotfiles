@@ -121,13 +121,17 @@ set display=lastline
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P]']'}
 
 " インデント関係
-set tabstop=2
-set shiftwidth=2
 set autoindent
-set expandtab
 set listchars=tab:>-,trail:.
-" set softtabstop=2 悪さするほうが多い?
 set backspace=indent,eol,start
+autocmd BufRead * call EnableTabIndent()
+autocmd BufRead *.go call EnableSpaceIndent()
+function EnableTabIndent()
+  set noexpandtab
+endfunction
+function EnableSpaceIndent()
+  set expandtab
+endfunction
 
 " 検索関係
 set incsearch
@@ -139,7 +143,6 @@ autocmd BufWinEnter *.* silent loadview
 
 " その他
 set whichwrap=b,s,h,l,<,>,[,]
-set filetype=html
 autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
 autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
