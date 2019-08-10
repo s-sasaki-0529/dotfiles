@@ -78,7 +78,8 @@ let g:rspec_command = "!bundle exec rspec --format doc {spec}"
 " ALE
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
-\   'vue': ['eslint']
+\   'vue': ['eslint'],
+\   'go': ['gofmt']
 \}
 let g:ale_open_list = 0
 let g:ale_fix_on_save = 0
@@ -112,6 +113,7 @@ highlight VertSplit    cterm=NONE ctermfg=233   ctermbg=233
 highlight Pmenu     ctermbg=4
 highlight PmenuSel  ctermbg=1
 highlight PmenuSbar ctermbg=4
+highlight SpecialKey ctermfg=235
 syntax on
 
 " 文字コード関係
