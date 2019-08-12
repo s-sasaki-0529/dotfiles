@@ -88,7 +88,7 @@ let g:ale_sign_warning = '⚡︎'
 let g:ale_set_highlights = 1
 highlight ALEError ctermbg=54
 highlight ALEWarning ctermbg=62
-command Fix ALEFix
+command Fi ALEFix
 command Ale call ale#toggle#Toggle()
 
 " 括弧の自動入力
@@ -163,8 +163,6 @@ command Fn echo expand("%:p")
 " その他 キーバインド
 nnoremap <C-C> :w<CR>
 inoremap <silent> jj <ESC>:w<CR>:noh<CR>
-inoremap <silent> <C-l> <CR>
-inoremap <silent> <C-;> <CR>
 nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
