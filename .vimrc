@@ -16,7 +16,10 @@ if dein#load_state(s:dein_dir)
   " プラグインのインストール
   call dein#add('Shougo/neocomplcache.vim')         " コード補完
   call dein#add('Shougo/neocomplcache-rsense.vim')  " コード補完
+	call dein#add('SirVer/ultisnips')                 " スニペット
   call dein#add('w0rp/ale')
+	call dein#add('fatih/vim-go')
+	call dein#add('AndrewRadev/splitjoin.vim')
   call dein#add('thinca/vim-quickrun')
   call dein#add('Townk/vim-autoclose')
   call dein#add('tpope/vim-commentary')
@@ -62,6 +65,11 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:rsenseHome = expand("~/.vim/bundle/rsense")
 let g:rsenseUseOmniFunc = 1
 
+" go-vim
+let g:go_fmt_command = "goimports" "ファイル保存時にimportを調整
+let g:go_fmt_fail_silently = 1 "gofmt失敗時にquickfixを表示しない
+let g:go_auto_type_info = 1
+
 " fzf
 nnoremap <silent> ,f :GFiles<CR>
 nnoremap <silent> ,F :GFiles?<CR>
@@ -78,8 +86,7 @@ let g:rspec_command = "!bundle exec rspec --format doc {spec}"
 " ALE
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
-\   'vue': ['eslint'],
-\   'go': ['gofmt']
+\   'vue': ['eslint']
 \}
 let g:ale_open_list = 0
 let g:ale_fix_on_save = 0
@@ -155,6 +162,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
 autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
+filetype plugin indent on
 nnoremap <silent> ,d :bd<CR>
 
 " その他コマンド
