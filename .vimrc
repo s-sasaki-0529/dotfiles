@@ -69,6 +69,7 @@ let g:rsenseUseOmniFunc = 1
 let g:go_fmt_command = "goimports" "ファイル保存時にimportを調整
 let g:go_fmt_fail_silently = 1 "gofmt失敗時にquickfixを表示しない
 let g:go_auto_type_info = 1
+let g:go_metalinter_enabled = []
 
 " fzf
 nnoremap <silent> ,f :GFiles<CR>
@@ -165,13 +166,20 @@ autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを�
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
 filetype plugin indent on
 nnoremap <silent> ,d :bd<CR>
+set updatetime=2000
+autocmd CursorHold * call AutoSave()
+function AutoSave()
+  if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
+    call feedkeys(":w\<CR>", "in")
+  endif
+endfunction
 
 " その他コマンド
 command Fn echo expand("%:p")
 
 " その他 キーバインド
 nnoremap <C-C> :w<CR>
-inoremap <silent> jj <ESC>:w<CR>:noh<CR>
+inoremap <silent> jj <ESC>:noh<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR>
 nnoremap <Down> gj
