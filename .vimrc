@@ -15,6 +15,7 @@ if dein#load_state(s:dein_dir)
 
   " プラグインのインストール
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('deoplete-plugins/deoplete-go', {'build': 'make'})
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
