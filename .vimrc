@@ -14,8 +14,11 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
   " プラグインのインストール
-  call dein#add('Shougo/neocomplcache.vim')         " コード補完
-  call dein#add('Shougo/neocomplcache-rsense.vim')  " コード補完
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
 	call dein#add('SirVer/ultisnips')                 " スニペット
   call dein#add('w0rp/ale')
 	call dein#add('fatih/vim-go')
@@ -49,21 +52,10 @@ endif
 autocmd BufWinLeave *.* silent mkview
 autocmd BufWinEnter *.* silent loadview
 
-" neocomplcache コード補完の設定
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-let g:rsenseHome = expand("~/.vim/bundle/rsense")
-let g:rsenseUseOmniFunc = 1
+" deoplete
+let g:python3_host_prog='/usr/bin/python3'
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_completion_start_length = 1
 
 " go-vim
 let g:go_fmt_command = "goimports" "ファイル保存時にimportを調整
@@ -165,7 +157,7 @@ autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを�
 autocmd InsertLeave * set hlsearch " 挿入モード以外ではハイライトを有効
 filetype plugin indent on
 nnoremap <silent> ,d :bd<CR>
-set updatetime=2000
+set updatetime=1000
 autocmd CursorHold * call AutoSave()
 function AutoSave()
   if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
