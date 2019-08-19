@@ -87,8 +87,7 @@ let g:rspec_command = "!bundle exec rspec --format doc {spec}"
 " ALE
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
-\   'vue': ['eslint'],
-\   'go': ['govet', 'golint']
+\   'vue': ['eslint']
 \}
 let g:ale_open_list = 0
 let g:ale_fix_on_save = 1
