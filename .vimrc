@@ -91,13 +91,13 @@ let g:ale_fixers = {
 \   'go': ['govet', 'golint']
 \}
 let g:ale_open_list = 0
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✖︎'
 let g:ale_sign_warning = '⚡︎'
 let g:ale_set_highlights = 1
 highlight ALEError ctermbg=54
 highlight ALEWarning ctermbg=62
-command Fi ALEFix
+command Fix ALEFix
 command Ale call ale#toggle#Toggle()
 
 " 括弧の自動入力
