@@ -90,7 +90,7 @@ let g:ale_fixers = {
 \   'vue': ['eslint'],
 \   'go': ['govet', 'golint']
 \}
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_fix_on_save = 0
 let g:ale_sign_error = '✖︎'
 let g:ale_sign_warning = '⚡︎'
