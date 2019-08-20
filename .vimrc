@@ -20,10 +20,11 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-	call dein#add('SirVer/ultisnips')                 " スニペット
+  call dein#add('SirVer/ultisnips')                 " スニペット
+  call dein#add('honza/vim-snippets')
   call dein#add('w0rp/ale')
-	call dein#add('fatih/vim-go')
-	call dein#add('AndrewRadev/splitjoin.vim')
+  call dein#add('fatih/vim-go')
+  call dein#add('AndrewRadev/splitjoin.vim')
   call dein#add('thinca/vim-quickrun')
   call dein#add('Townk/vim-autoclose')
   call dein#add('tpope/vim-commentary')
@@ -57,6 +58,11 @@ autocmd BufWinEnter *.* silent loadview
 let g:python3_host_prog='/usr/bin/python3'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " go-vim
 let g:go_fmt_command = "goimports" "ファイル保存時にimportを調整
