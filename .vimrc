@@ -39,6 +39,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('posva/vim-vue')
   call dein#add('tpope/vim-endwise')
   call dein#add('vim-jp/vimdoc-ja')
+  call dein#add('guns/vim-sexp')
+  call dein#add('liquidz/vim-iced')
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('thoughtbot/vim-rspec')
@@ -69,6 +71,9 @@ let g:go_fmt_command = "goimports" "ファイル保存時にimportを調整
 let g:go_fmt_fail_silently = 1 "gofmt失敗時にquickfixを表示しない
 let g:go_auto_type_info = 1
 let g:go_metalinter_enabled = []
+
+" vim-iced
+let g:iced_enable_default_key_mappings = v:true
 
 " fzf
 nnoremap <silent> ,f :GFiles<CR>
@@ -158,6 +163,7 @@ set incsearch
 set hlsearch
 
 " その他
+set hidden
 set whichwrap=b,s,h,l,<,>,[,]
 autocmd BufWritePre * :%s/\s\+$//ge " 保存時に行末スペースを削除
 autocmd InsertEnter * set nohlsearch " 挿入モードではハイライトを無効
