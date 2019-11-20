@@ -1,0 +1,44 @@
+#
+# for common javascript
+#
+snippet function
+function ${1:name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet method
+${0} (${1}) {
+	${2}
+},
+endsnippet
+
+snippet ()
+(${1:args}) => ${2}
+endsnippet
+
+snippet (){}
+(${1:args}) => {
+	${2}
+}
+endsnippet
+
+snippet :
+${1:key}: ${2:value}
+endsnippet
+
+snippet const
+const ${1:name} = ${2:value}
+endsnippet
+
+snippet	import
+import ${1:name} from '${2}'
+endsnippet
+
+snippet export
+export default ${0}
+endsnippet
+
+snippet log
+console.log(${0})
+endsnippet
