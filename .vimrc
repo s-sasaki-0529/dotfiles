@@ -55,7 +55,6 @@ autocmd BufWinLeave *.* silent mkview
 autocmd BufWinEnter *.* silent loadview
 
 " deoplete
-let g:python3_host_prog='/root/.pyenv/shims/python'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
 
