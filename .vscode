@@ -1,0 +1,79 @@
+{
+  // vimキーバインド全般
+  "vim.leader": ",",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [],
+      "commands": [
+        ":q"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.nextEditor"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.previousEditor"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.revealDefinition"
+        }
+      ]
+    }
+  ],
+  // javascript
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  // ruby
+  "ruby.lint": {
+    "rubocop": true
+  },
+  // その他
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": -1,
+  "editor.tabSize": 2,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveTimeout": 5000,
+}
