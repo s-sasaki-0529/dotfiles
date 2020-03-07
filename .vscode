@@ -3,61 +3,40 @@
   "vim.leader": ",",
   "vim.insertModeKeyBindings": [
     {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": [ "j", "j" ],
+      "after": [ "<Esc>" ]
     }
   ],
   "vim.normalModeKeyBindings": [
     {
-      "before": [
-        "<leader>",
-        "d"
-      ],
+      "before": [ "<leader>", "d" ],
       "after": [],
-      "commands": [
-        ":q"
-      ]
+      "commands": [ ":q" ]
     },
     {
-      "before": [
-        "<leader>",
-        "f"
-      ],
+      "before": [ "<leader>", "f" ],
       "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.nextEditor"
-        }
-      ]
+      "commands": [ { "command": "workbench.action.nextEditor" } ]
     },
     {
-      "before": [
-        "<leader>",
-        "s"
-      ],
+      "before": [ "<leader>", "s" ],
       "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.previousEditor"
-        }
-      ]
+      "commands": [ { "command": "workbench.action.previousEditor" } ]
     },
     {
-      "before": [
-        "<leader>",
-        "g"
-      ],
+      "before": [ "<leader>", "g" ],
       "after": [],
-      "commands": [
-        {
-          "command": "editor.action.revealDefinition"
-        }
-      ]
+      "commands": [ { "command": "editor.action.revealDefinition" } ]
+    },
+    {
+      "before": [ "<leader>", "r" ],
+      "after": [],
+      "commands": [ { "command": "extension.runSpecLine" } ]
+    },
+    {
+      "before": [ "<leader>", "R" ],
+      "after": [],
+      "commands": [ { "command": "extension.runLastSpec" } ]
     }
   ],
   // javascript
@@ -68,12 +47,13 @@
   "ruby.lint": {
     "rubocop": true
   },
+  "ruby.specCommand": "bundle exec spring rspec",
   // その他
+  "terminal.integrated.copyOnSelection": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "window.zoomLevel": -1,
   "editor.tabSize": 2,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
-  "editor.formatOnSave": true,
   "editor.formatOnSaveTimeout": 5000,
 }
