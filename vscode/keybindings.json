@@ -1,0 +1,35 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+]",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "git.checkout"
+  },
+  {
+    "key": "cmd+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  }
+]
