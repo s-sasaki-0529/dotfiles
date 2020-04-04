@@ -11,6 +11,10 @@
     "when": "terminalFocus"
   },
   {
+    "key": "ctrl+w",
+    "command": "workbench.action.tasks.runTask"
+  },
+  {
     "key": "ctrl+k",
     "command": "workbench.action.showCommands"
   },
