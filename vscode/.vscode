@@ -39,21 +39,38 @@
       "commands": [ { "command": "extension.runLastSpec" } ]
     }
   ],
-  // javascript
+
+  // リンター
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": false,
+    "source.fixAll.rubocop": false
   },
-  // ruby
-  "ruby.lint": {
-    "rubocop": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "ruby.rubocop.onSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
   },
+
+  // 検索
+  "files.exclude": {
+    "**/.git": true,
+    "node_modules": true
+  },
+
+  // rspec
   "ruby.specCommand": "bundle exec spring rspec",
+  "rubyTestExplorer.rspecCommand": "bundle exec spring rspec",
+  "rubyTestExplorer.testFramework": "rspec",
+
+
   // その他
+  "editor.minimap.enabled": false,
   "terminal.integrated.copyOnSelection": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "window.zoomLevel": -1,
   "editor.tabSize": 2,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
-  "editor.formatOnSaveTimeout": 5000,
+  "trailing-spaces.trimOnSave": true
 }
