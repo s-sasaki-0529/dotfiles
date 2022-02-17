@@ -1,76 +1,144 @@
 {
-  // vimキーバインド全般
-  "vim.leader": ",",
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [ "j", "j" ],
-      "after": [ "<Esc>" ]
-    }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": [ "<leader>", "d" ],
-      "after": [],
-      "commands": [ ":q" ]
-    },
-    {
-      "before": [ "<leader>", "f" ],
-      "after": [],
-      "commands": [ { "command": "workbench.action.nextEditor" } ]
-    },
-    {
-      "before": [ "<leader>", "s" ],
-      "after": [],
-      "commands": [ { "command": "workbench.action.previousEditor" } ]
-    },
-    {
-      "before": [ "<leader>", "g" ],
-      "after": [],
-      "commands": [ { "command": "editor.action.revealDefinition" } ]
-    },
-    {
-      "before": [ "<leader>", "r" ],
-      "after": [],
-      "commands": [ { "command": "extension.runSpecLine" } ]
-    },
-    {
-      "before": [ "<leader>", "R" ],
-      "after": [],
-      "commands": [ { "command": "extension.runLastSpec" } ]
-    }
-  ],
-
-  // リンター
-  "editor.formatOnSave": false,
+  // エディタ共通設定
+  "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": false,
-    "source.fixAll.rubocop": false
+    "source.fixAll.eslint": false, // eslint 自動修正は重くなるのでデフォルト無効化
+    "source.fixAll.rubocop": false // rubocop 自動修正は重くなりえるのデフォルト無効化
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "ruby.rubocop.onSave": true,
-  "[javascript]": {
-    "editor.formatOnSave": true
-  },
+  "editor.glyphMargin": false, // グリフマージンを非表示
+  "editor.minimap.enabled": false, // ミニマップを非表示
+  "editor.tabSize": 2, // タブ幅
+  "editor.detectIndentation": false, // ファイルの内容からインデントを自動判定しない
+	"editor.insertSpaces": true, // タブをスペースに変換
+	"editor.lineNumbers": "on", // 行番号を表示
+	"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?", // 単語の区切り文字 ('-' を除外することでクラス名を正確に拾えるようにしてる)
+  "editor.bracketPairColorization.enabled": true, // 括弧の色付け
+  "editor.suggest.preview": true, // オートコンプリートのプレビューを表示
+  "editor.wordWrap": "off", // 横に長いときの折返しをさせない
+  "editor.inlineSuggest.enabled": true, // インラインサジェストを表示する
 
-  // 検索
-  "files.exclude": {
+  // エクスプローラー
+  "explorer.confirmDragAndDrop": false, // ドラッグアンドドロップ時に確認ダイアログを表示しない
+  "explorer.confirmDelete": false, // ファイル削除時に確認ダイアログを表示しない
+  "explorer.openEditors.visible": 0, // エクスプローラーに開いているファイル一覧を表示しない
+
+  // ファイル
+  "files.autoSave": "onFocusChange", // タブやウィンドウがフォーカスを失ったタイミングで自動保存する
+  "files.trimTrailingWhitespace": true, // 保存時に無駄な空白を削除する (リンターとバッティングするかも)
+  "files.watcherExclude": { // 監視対象ファイルを制限(意味あるか怪しい)
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+  },
+  "files.exclude": { // 表示対象ファイルを制限
     "**/.git": true,
     "node_modules": true
   },
 
-  // rspec
-  "ruby.specCommand": "bundle exec spring rspec",
-  "rubyTestExplorer.rspecCommand": "bundle exec spring rspec",
-  "rubyTestExplorer.testFramework": "rspec",
+  // 検索
+  "search.exclude": { // 検索対象ファイルを制限
+    "/node_modules": true
+  },
 
+  // ターミナル
+  "terminal.integrated.copyOnSelection": true, // ターミナルでテキストを選択するとコピーする
+  "terminal.external.osxExec": "iTerm.app", // ターミナルに iTerm を使用する
 
-  // その他
-  "editor.minimap.enabled": false,
-  "terminal.integrated.copyOnSelection": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "window.zoomLevel": -1,
-  "editor.tabSize": 2,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "trailing-spaces.trimOnSave": true
+  // ワークベンチ
+  "workbench.startupEditor": "none", // 起動時、何も開かない
+  "workbench.tree.indent": 20, // エクスプローラーのインデント幅を適度に広くする
+  "workbench.editor.enablePreview": false, // プレビュー表示をせずに、開いたファイルは常に新しいタブで開く
+  "workbench.editor.enablePreviewFromQuickOpen": false, // クイックオープンで開いたファイルもプレビュー表示しない
+
+  // 言語: Ruby
+  "ruby.intellisense": "rubyLocate", // インテリセンスの有効化 (solargraph があれば false で良いかも?)
+  "ruby.useLanguageServer": true, // ビルトインの言語サーバーを使う (solargraph があれば false で良いかも?)
+  "ruby.specCommand": "bundle exec spring rspec -f SystemSpecFormatter -o ./system_spec_result.json", // EagleEye 特化
+  "[ruby]": {
+    "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
+    "editor.defaultFormatter": "mbessey.vscode-rufo", // フォーマットには Rufo を使用する (文字化けするバグがあるっぽいので怪しい)
+  },
+
+  // 言語: JavaScript
+  "javascript.validate.enable": false, // 組み込みの構文チェックを無効化 (eslint などに任せるため)
+  "javascript.updateImportsOnFileMove.enabled": "always", // JS でファイルパス変更時の参照元も自動でリネームする
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
+    "editor.formatOnSave": true // JS は保存時自動フォーマットする
+  },
+
+  // 言語: TypeScript
+  "typescript.updateImportsOnFileMove.enabled": "always", // TS でファイルパス変更時の参照元も自動でリネームする
+  "typescript.inlayHints.parameterNames.enabled": "none", // パラメータ名のヒントを表示しない(見づらいので)
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
+    "editor.formatOnSave": true, // TS は保存時自動フォーマットする
+    "editor.quickSuggestions": { // 全てのサジェストを有効化
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+  },
+
+  // 言語: JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // フォーマットには Pretteir を使用する
+  },
+
+  // 言語: HTML
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // フォーマットには Pretteir を使用する
+  },
+
+  // 言語: Vue
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
+    "editor.formatOnSave": true // Vue は保存時自動フォーマットする
+  },
+
+  // 言語 TS + React
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
+    "editor.formatOnSave": true // TS + React は保存時自動フォーマットする
+  },
+
+  // 拡張: vim
+  "vim.leader": ",", // , をカスタムコマンドの起点にする
+  "vim.statusBarColorControl": false, // ステータスバーの色を変更しない(パフォーマンス悪いらしい)
+  "vim.foldfix": true, // コード折りたたみの有効化
+  "vim.useSystemClipboard": false, // ヤンクを使用し、システムクリップボードは使用しない
+  "vim.insertModeKeyBindings": [
+    { "before": ["j", "j"], "after": ["<Esc>"] } // jj - コマンドモードに戻る
+  ],
+  "vim.normalModeKeyBindings": [
+    { "before": ["<leader>", "d"], "after": [], "commands": [":q"] }, // ,d - タブを閉じる
+    { "before": ["<leader>", "f"], "after": [], "commands": [{ "command": "workbench.action.nextEditor" }] }, // ,f - 次のタブへ
+    { "before": ["<leader>", "s"], "after": [], "commands": [{ "command": "workbench.action.previousEditor" }] }, // ,s - 前のタブへ
+    { "before": ["<leader>", "g"], "after": [], "commands": [{ "command": "editor.action.revealDefinition" }] }, // ,g - 定義元へジャンブ
+    { "before": ["<leader>", "r"], "after": [], "commands": [{ "command": "extension.runSpecLine" }] }, // ,r - RSpec 実行(現在行)
+  ],
+
+  // 拡張: eslint
+  "eslint.packageManager": "yarn",
+  "eslint.validate": ["javascript", "typescript"],
+  "eslint.lintTask.options": "--report-unused-disable-directives", // 不要な無効化コメントを検出する
+
+  // 拡張: codesnap
+  "codesnap.containerPadding": "0",
+
+  // 拡張: copilot
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  },
+
+  // 拡張: solargraph
+  "solargraph.definitions": true,
+  "solargraph.diagnostics": true,
+  "solargraph.useBundler": false,
+
+  // 拡張: auto-close-tag
+  "auto-close-tag.disableOnLanguage": ["javascript", "typescript"], // 言語によっては無効化する
 }
