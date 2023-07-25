@@ -23,7 +23,6 @@
   "explorer.openEditors.visible": 0, // エクスプローラーに開いているファイル一覧を表示しない
 
   // ファイル
-  "files.autoSave": "onFocusChange", // タブやウィンドウがフォーカスを失ったタイミングで自動保存する
   "files.trimTrailingWhitespace": true, // 保存時に無駄な空白を削除する (リンターとバッティングするかも)
   "files.watcherExclude": { // 監視対象ファイルを制限(意味あるか怪しい)
     "**/.git/objects/**": true,
@@ -53,10 +52,11 @@
   // 言語: Ruby
   "ruby.intellisense": "rubyLocate", // インテリセンスの有効化 (solargraph があれば false で良いかも?)
   "ruby.useLanguageServer": true, // ビルトインの言語サーバーを使う (solargraph があれば false で良いかも?)
-  "ruby.specCommand": "bundle exec spring rspec -f SystemSpecFormatter -o ./system_spec_result.json", // EagleEye 特化
+  // "ruby.specCommand": "bundle exec spring rspec -f SystemSpecFormatter -o ./system_spec_result.json", // EagleEye 特化
+  "ruby.specCommand": "bin/rspec", // EagleEye 以外
   "[ruby]": {
     "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
-    "editor.defaultFormatter": "mbessey.vscode-rufo", // フォーマットには Rufo を使用する (文字化けするバグがあるっぽいので怪しい)
+    "editor.defaultFormatter": "misogi.ruby-rubocop", // フォーマットには Rufo を使用する (文字化けするバグがあるっぽいので怪しい)
   },
 
   // 言語: JavaScript
@@ -102,6 +102,9 @@
     "editor.formatOnSave": true // TS + React は保存時自動フォーマットする
   },
 
+  // 言語 Rust
+  "rust-analyzer.check.command": "clippy",
+
   // 拡張: vim
   "vim.leader": ",", // , をカスタムコマンドの起点にする
   "vim.statusBarColorControl": false, // ステータスバーの色を変更しない(パフォーマンス悪いらしい)
@@ -117,6 +120,11 @@
     { "before": ["<leader>", "g"], "after": [], "commands": [{ "command": "editor.action.revealDefinition" }] }, // ,g - 定義元へジャンブ
     { "before": ["<leader>", "r"], "after": [], "commands": [{ "command": "extension.runSpecLine" }] }, // ,r - RSpec 実行(現在行)
   ],
+
+  // 拡張: stylelint
+  "stylelint.enable": true,
+  "stylelint.configFile": ".stylelintrc.json",
+  "stylelint.validate": ["css", "scss", "vue"],
 
   // 拡張: eslint
   "eslint.packageManager": "yarn",
@@ -139,6 +147,20 @@
   "solargraph.diagnostics": true,
   "solargraph.useBundler": false,
 
+  // 拡張: trailing-spaces
+  "trailing-spaces.syntaxIgnore": ["markdown"],
+
   // 拡張: auto-close-tag
-  "auto-close-tag.disableOnLanguage": ["javascript", "typescript"], // 言語によっては無効化する
+  "auto-close-tag.disableOnLanguage": [
+    "javascript",
+    "typescript"
+  ],
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "editor.stickyScroll.enabled": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "dart.flutterSdkPath": "/Users/shingo.sasaki/flutter",
+  "diffEditor.ignoreTrimWhitespace": false
 }
