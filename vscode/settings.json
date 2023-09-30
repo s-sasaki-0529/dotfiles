@@ -1,5 +1,6 @@
 {
-  // エディタ共通設定
+    // エディタ共通設定
+    "workbench.colorTheme": "Default Dark Modern",
   "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": false, // eslint 自動修正は重くなるのでデフォルト無効化
@@ -114,11 +115,12 @@
     { "before": ["j", "j"], "after": ["<Esc>"] } // jj - コマンドモードに戻る
   ],
   "vim.normalModeKeyBindings": [
+    { "before": ["<leader>", "r"], "after": [], "commands": [":redo"] }, // ,r - redo
     { "before": ["<leader>", "d"], "after": [], "commands": [":q"] }, // ,d - タブを閉じる
     { "before": ["<leader>", "f"], "after": [], "commands": [{ "command": "workbench.action.nextEditor" }] }, // ,f - 次のタブへ
     { "before": ["<leader>", "s"], "after": [], "commands": [{ "command": "workbench.action.previousEditor" }] }, // ,s - 前のタブへ
     { "before": ["<leader>", "g"], "after": [], "commands": [{ "command": "editor.action.revealDefinition" }] }, // ,g - 定義元へジャンブ
-    { "before": ["<leader>", "r"], "after": [], "commands": [{ "command": "extension.runSpecLine" }] }, // ,r - RSpec 実行(現在行)
+    { "before": ["<leader>", "t"], "after": [], "commands": [{ "command": "extension.runSpecLine" }] }, // ,t - RSpec 実行(現在行)
   ],
 
   // 拡張: stylelint
@@ -155,12 +157,15 @@
     "javascript",
     "typescript"
   ],
-  "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "editor.stickyScroll.enabled": true,
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "dart.flutterSdkPath": "/Users/shingo.sasaki/flutter",
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "githubPullRequests.pullBranch": "never",
+  "window.zoomLevel": 1,
+  "search.useParentIgnoreFiles": true
 }
