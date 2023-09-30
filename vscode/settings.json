@@ -1,6 +1,6 @@
 {
-    // エディタ共通設定
-    "workbench.colorTheme": "Default Dark Modern",
+  // エディタ共通設定
+  "workbench.colorTheme": "Default Dark Modern",
   "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": false, // eslint 自動修正は重くなるのでデフォルト無効化
@@ -53,11 +53,9 @@
   // 言語: Ruby
   "ruby.intellisense": "rubyLocate", // インテリセンスの有効化 (solargraph があれば false で良いかも?)
   "ruby.useLanguageServer": true, // ビルトインの言語サーバーを使う (solargraph があれば false で良いかも?)
-  // "ruby.specCommand": "bundle exec spring rspec -f SystemSpecFormatter -o ./system_spec_result.json", // EagleEye 特化
   "ruby.specCommand": "bin/rspec", // EagleEye 以外
   "[ruby]": {
     "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
-    "editor.defaultFormatter": "misogi.ruby-rubocop", // フォーマットには Rufo を使用する (文字化けするバグがあるっぽいので怪しい)
   },
 
   // 言語: JavaScript
@@ -129,7 +127,6 @@
   "stylelint.validate": ["css", "scss", "vue"],
 
   // 拡張: eslint
-  "eslint.packageManager": "yarn",
   "eslint.validate": ["javascript", "typescript"],
   "eslint.lintTask.options": "--report-unused-disable-directives", // 不要な無効化コメントを検出する
 
@@ -147,7 +144,7 @@
   // 拡張: solargraph
   "solargraph.definitions": true,
   "solargraph.diagnostics": true,
-  "solargraph.useBundler": false,
+  "solargraph.useBundler": true,
 
   // 拡張: trailing-spaces
   "trailing-spaces.syntaxIgnore": ["markdown"],
@@ -163,7 +160,6 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
-  "dart.flutterSdkPath": "/Users/shingo.sasaki/flutter",
   "diffEditor.ignoreTrimWhitespace": false,
   "githubPullRequests.pullBranch": "never",
   "window.zoomLevel": 1,
