@@ -1,39 +1,48 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
   {
-    "key": "ctrl+t",
-    "command": "workbench.action.terminal.focus",
+    "key": "f1",
+    "command": "workbench.action.showCommands" // コマンドパレットを開く
+  },
+  {
+    "key": "f2",
+    "command": "workbench.action.quickOpen" // ファイル検索を開く
+  },
+  {
+    "key": "cmd+o",
+    "command": "workbench.action.showCommands" // コマンドパレットを開く
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.quickOpen" // ファイル検索を開く
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.terminal.focusNext", // 次のターミナルに切り替える
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "workbench.action.terminal.new", // 新しいターミナルを開く
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+=",
+    "command": "workbench.action.terminal.split", // 新しいターミナルを開く(分割)
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+s",
+    "command": "editor.action.triggerSuggest", // オートコンプリートを表示
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "cmd+h",
+    "command": "workbench.action.terminal.focus", // ターミナルにフォーカスを移す
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+t",
-    "command": "workbench.action.focusFirstEditorGroup",
+    "key": "cmd+h",
+    "command": "workbench.action.focusActiveEditorGroup", // エディタにフォーカスを移す
     "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "workbench.action.tasks.runTask"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.showCommands"
-  },
-  {
-    "key": "ctrl+[",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+]",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "git.checkout"
-  },
-  {
-    "key": "cmd+1",
-    "command": "-workbench.action.focusFirstEditorGroup"
   }
 ]
