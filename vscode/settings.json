@@ -1,28 +1,26 @@
 {
   // エディタ共通設定
-  "workbench.colorTheme": "Default Dark Modern",
-  "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
+  "editor.formatOnSave": true, // 保存時の自動フォーマットは負荷がかかるので無効化
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": false, // eslint 自動修正は重くなるのでデフォルト無効化
-    "source.fixAll.rubocop": false // rubocop 自動修正は重くなりえるのデフォルト無効化
+    "source.fixAll.eslint": "never",
+    "source.fixAll.rubocop": "never"
   },
   "editor.glyphMargin": false, // グリフマージンを非表示
   "editor.minimap.enabled": false, // ミニマップを非表示
   "editor.tabSize": 2, // タブ幅
   "editor.detectIndentation": false, // ファイルの内容からインデントを自動判定しない
-	"editor.insertSpaces": true, // タブをスペースに変換
-	"editor.lineNumbers": "on", // 行番号を表示
-	"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?", // 単語の区切り文字 ('-' を除外することでクラス名を正確に拾えるようにしてる)
+  "editor.insertSpaces": true, // タブをスペースに変換
+  "editor.lineNumbers": "on", // 行番号を表示
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?", // 単語の区切り文字 ('-' を除外することでクラス名を正確に拾えるようにしてる)
   "editor.bracketPairColorization.enabled": true, // 括弧の色付け
   "editor.suggest.preview": true, // オートコンプリートのプレビューを表示
   "editor.wordWrap": "off", // 横に長いときの折返しをさせない
   "editor.inlineSuggest.enabled": true, // インラインサジェストを表示する
-
+  "terminal.integrated.enableFileLinks": "on",
   // エクスプローラー
   "explorer.confirmDragAndDrop": false, // ドラッグアンドドロップ時に確認ダイアログを表示しない
   "explorer.confirmDelete": false, // ファイル削除時に確認ダイアログを表示しない
   "explorer.openEditors.visible": 0, // エクスプローラーに開いているファイル一覧を表示しない
-
   // ファイル
   "files.trimTrailingWhitespace": true, // 保存時に無駄な空白を削除する (リンターとバッティングするかも)
   "files.watcherExclude": { // 監視対象ファイルを制限(意味あるか怪しい)
@@ -34,30 +32,35 @@
     "**/.git": true,
     "node_modules": true
   },
-
   // 検索
   "search.exclude": { // 検索対象ファイルを制限
     "/node_modules": true
   },
-
   // ターミナル
   "terminal.integrated.copyOnSelection": true, // ターミナルでテキストを選択するとコピーする
   "terminal.external.osxExec": "iTerm.app", // ターミナルに iTerm を使用する
-
   // ワークベンチ
   "workbench.startupEditor": "none", // 起動時、何も開かない
-  "workbench.tree.indent": 20, // エクスプローラーのインデント幅を適度に広くする
-  "workbench.editor.enablePreview": false, // プレビュー表示をせずに、開いたファイルは常に新しいタブで開く
+  "workbench.tree.indent": 20, // プレビュー表示をせずに、開いたファイルは常に新しいタブで開く
   "workbench.editor.enablePreviewFromQuickOpen": false, // クイックオープンで開いたファイルもプレビュー表示しない
-
   // 言語: Ruby
   "ruby.intellisense": "rubyLocate", // インテリセンスの有効化 (solargraph があれば false で良いかも?)
   "ruby.useLanguageServer": true, // ビルトインの言語サーバーを使う (solargraph があれば false で良いかも?)
   "ruby.specCommand": "bin/rspec", // EagleEye 以外
   "[ruby]": {
-    "editor.formatOnSave": false, // 保存時の自動フォーマットは負荷がかかるので無効化
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.formatOnType": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.rulers": [
+      120
+    ],
+    "editor.semanticHighlighting.enabled": true, // 保存時の自動フォーマットは負荷がかかるので無効化
   },
-
   // 言語: JavaScript
   "javascript.validate.enable": false, // 組み込みの構文チェックを無効化 (eslint などに任せるため)
   "javascript.updateImportsOnFileMove.enabled": "always", // JS でファイルパス変更時の参照元も自動でリネームする
@@ -65,7 +68,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
     "editor.formatOnSave": true // JS は保存時自動フォーマットする
   },
-
   // 言語: TypeScript
   "typescript.updateImportsOnFileMove.enabled": "always", // TS でファイルパス変更時の参照元も自動でリネームする
   "typescript.inlayHints.parameterNames.enabled": "none", // パラメータ名のヒントを表示しない(見づらいので)
@@ -78,61 +80,131 @@
       "strings": true
     },
   },
-
   // 言語: JSON
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode" // フォーマットには Pretteir を使用する
   },
-
   // 言語: HTML
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode" // フォーマットには Pretteir を使用する
   },
-
   // 言語: Vue
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
     "editor.formatOnSave": true // Vue は保存時自動フォーマットする
   },
-
   // 言語 TS + React
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマットには Pretteir を使用する
     "editor.formatOnSave": true // TS + React は保存時自動フォーマットする
   },
-
   // 言語 Rust
   "rust-analyzer.check.command": "clippy",
-
   // 拡張: vim
   "vim.leader": ",", // , をカスタムコマンドの起点にする
   "vim.statusBarColorControl": false, // ステータスバーの色を変更しない(パフォーマンス悪いらしい)
   "vim.foldfix": true, // コード折りたたみの有効化
   "vim.useSystemClipboard": false, // ヤンクを使用し、システムクリップボードは使用しない
   "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] } // jj - コマンドモードに戻る
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    }, // jj - コマンドモードに戻りながら保存
   ],
   "vim.normalModeKeyBindings": [
-    { "before": ["<leader>", "r"], "after": [], "commands": [":redo"] }, // ,r - redo
-    { "before": ["<leader>", "d"], "after": [], "commands": [":q"] }, // ,d - タブを閉じる
-    { "before": ["<leader>", "f"], "after": [], "commands": [{ "command": "workbench.action.nextEditor" }] }, // ,f - 次のタブへ
-    { "before": ["<leader>", "s"], "after": [], "commands": [{ "command": "workbench.action.previousEditor" }] }, // ,s - 前のタブへ
-    { "before": ["<leader>", "g"], "after": [], "commands": [{ "command": "editor.action.revealDefinition" }] }, // ,g - 定義元へジャンブ
-    { "before": ["<leader>", "t"], "after": [], "commands": [{ "command": "extension.runSpecLine" }] }, // ,t - RSpec 実行(現在行)
+    {
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "after": [],
+      "commands": [
+        ":redo"
+      ]
+    }, // ,r - redo
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [],
+      "commands": [
+        ":q"
+      ]
+    }, // ,d - タブを閉じる
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.nextEditor"
+        }
+      ]
+    }, // ,f - 次のタブへ
+    {
+      "before": [
+        "<leader>",
+        "s"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.previousEditor"
+        }
+      ]
+    }, // ,s - 前のタブへ
+    {
+      "before": [
+        "<leader>",
+        "g"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.revealDefinition"
+        }
+      ]
+    }, // ,g - 定義元へジャンブ
+    {
+      "before": [
+        "<leader>",
+        "t"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "extension.runSpecLine"
+        }
+      ]
+    }, // ,t - RSpec 実行(現在行)
   ],
-
   // 拡張: stylelint
   "stylelint.enable": true,
   "stylelint.configFile": ".stylelintrc.json",
-  "stylelint.validate": ["css", "scss", "vue"],
-
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "vue"
+  ],
   // 拡張: eslint
-  "eslint.validate": ["javascript", "typescript"],
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
   "eslint.lintTask.options": "--report-unused-disable-directives", // 不要な無効化コメントを検出する
-
   // 拡張: codesnap
   "codesnap.containerPadding": "0",
-
   // 拡張: copilot
   "github.copilot.enable": {
     "*": true,
@@ -140,19 +212,25 @@
     "plaintext": false,
     "markdown": false
   },
-
   // 拡張: solargraph
   "solargraph.definitions": true,
   "solargraph.diagnostics": true,
   "solargraph.useBundler": true,
-
   // 拡張: trailing-spaces
-  "trailing-spaces.syntaxIgnore": ["markdown"],
-
+  "trailing-spaces.syntaxIgnore": [
+    "markdown"
+  ],
   // 拡張: auto-close-tag
   "auto-close-tag.disableOnLanguage": [
     "javascript",
     "typescript"
+  ],
+  // 拡張: Tailwind CSS
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "tv\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ]
   ],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "editor.stickyScroll.enabled": true,
@@ -160,8 +238,36 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
-  "diffEditor.ignoreTrimWhitespace": false,
   "githubPullRequests.pullBranch": "never",
+  "search.useParentIgnoreFiles": true,
+  "diffEditor.renderSideBySide": false,
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": false,
+  "workbench.activityBar.location": "top",
+  "workbench.editor.enablePreview": false,
+  "editor.multiCursorModifier": "ctrlCmd",
   "window.zoomLevel": 1,
-  "search.useParentIgnoreFiles": true
+  "editor.accessibilitySupport": "off",
+  "accessibility.signals.terminalCommandFailed": {
+    "sound": "on"
+  },
+  "accessibility.signals.chatRequestSent": {
+    "sound": "on"
+  },
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "on"
+  },
+  "accessibility.signals.save": {
+    "sound": "always"
+  },
+  "accessibility.signals.format": {
+    "sound": "always"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "git.openRepositoryInParentFolders": "never",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "accessibility.signals.progress": {
+    "sound": "on"
+  },
+  "security.workspace.trust.untrustedFiles": "newWindow"
 }
